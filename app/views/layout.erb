@@ -5,11 +5,22 @@
   </head>
   <body>
     <center>
-      
-      <a href="/signup">Signup</a><br>
-      <a href="/login">Login</a>
+
+      <% if logged_in? %>
+
+        <a href="/schedule/new">Create New Schedule</a><br>
+        <%= yield %>
+        <a href="/logout">Logout</a>
+
+      <% else %>
+
+        <a href="/signup">Signup</a><br>
+        <a href="/login">Login</a>
+        <%= yield %>
+
+      <% end %> 
     
-      <%= yield %> 
+      <!-- <%= yield %>  -->
       
       
     </center>
