@@ -7,7 +7,7 @@ class CoursesController < ApplicationController
     end
   end
 
-  get '/courses/new' do 
+  get '/courses/new_course' do 
     if logged_in?
       erb :'courses/new_course'
     else
