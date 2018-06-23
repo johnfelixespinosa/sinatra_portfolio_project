@@ -1,0 +1,11 @@
+<p> Welcome <%= current_user.username %>
+<h2> Your Courses </h2>
+
+<% @courses.each do |class| %>
+  <div>
+    <h1><%= course.course_name %><p></h1>
+      <h4><%= course.course_instructor %><p></h4>
+        <h4><%= course.course_credits %><p></h4><br>
+
+  </div>
+<% end %>

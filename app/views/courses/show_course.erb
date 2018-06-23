@@ -1,0 +1,10 @@
+<h2> You Added </h2>
+
+<% @course.each do |course| %>
+  <div>
+    <h1><%= course.course_name %><p></h1>
+      <h4><%= course.course_instructor %><p></h4>
+        <h4><%= course.course_credits %><p></h4><br>
+
+  </div>
+<% end %>
