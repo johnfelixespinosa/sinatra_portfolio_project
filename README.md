@@ -12,6 +12,11 @@ John Espinosa for Learn.co Fullstack Web Development Course
 
 # Development Timeline
   ##### Started June 21,2018
+  ##### June 25 - 
+    * User account creation completed
+    * Users can create classes that get added to their schedule
+    * Classes can be deleted
+    
 
 # License
   This project is being created open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
