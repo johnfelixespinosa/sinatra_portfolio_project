@@ -1,12 +1,17 @@
 <p> Welcome <%= current_user.username %>
 <h1> Your Courses </h1>
 
-<% current_user.courses.each do |course| %>
+<% current_user.courses.each do |c| %>
   <div>
-    <h2><font color=red><%= course.course_name %></font><p></h2>
-      <h4>Instructor: <%= course.course_instructor %></h4>
-        <h4>Course Credits: <%= course.course_credits %></h4><br>
+    <h2><font color=red><%= c.course_name %></font><p></h2>
+      <h4>Instructor: <%= c.course_instructor %></h4>
+        <h4>Course Credits: <%= c.course_credits %></h4><br>
           <%# <h4><%= course.user_id %>
+            <form method="post" action="/courses/<%= c.id %>/delete">
+              <input id="hidden" type="hidden" name="_method" value="DELETE">
+              <input class="btn btn-primary" type="submit" value="Withdraw from <%= c.course_name %>">
+            </form>
 
   </div>
 <% end %>
+

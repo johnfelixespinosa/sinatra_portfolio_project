@@ -3,6 +3,8 @@ class CoursesController < ApplicationController
   get '/courses/courses' do
     if logged_in?
       erb :'courses/courses'
+    else
+      redirect to '/login'
     end
   end
 
@@ -35,6 +37,18 @@ class CoursesController < ApplicationController
       redirect to '/login'
     end
   end
+
+  delete '/courses/:id/delete' do
+    if logged_in?
+      @course = Course.find_by_id(params[:id])
+        if @course && @course.user == current_user
+          @course.delete
+        end
+        redirect to '/courses/courses'
+      else
+        redirect to '/login'
+      end
+    end
 
 
 
