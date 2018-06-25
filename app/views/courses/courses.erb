@@ -1,11 +1,12 @@
 <p> Welcome <%= current_user.username %>
-<h2> Your Courses </h2>
+<h1> Your Courses </h1>
 
-<% @courses.each do |class| %>
+<% current_user.courses.each do |course| %>
   <div>
-    <h1><%= course.course_name %><p></h1>
-      <h4><%= course.course_instructor %><p></h4>
-        <h4><%= course.course_credits %><p></h4><br>
+    <h2><font color=red><%= course.course_name %></font><p></h2>
+      <h4>Instructor: <%= course.course_instructor %></h4>
+        <h4>Course Credits: <%= course.course_credits %></h4><br>
+          <%# <h4><%= course.user_id %>
 
   </div>
 <% end %>

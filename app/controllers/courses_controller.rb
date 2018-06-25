@@ -1,8 +1,7 @@
 class CoursesController < ApplicationController
 
-  get '/courses' do
+  get '/courses/courses' do
     if logged_in?
-      @courses = Course.all
       erb :'courses/courses'
     end
   end
