@@ -22,6 +22,14 @@ class ApplicationController <Sinatra::Base
       @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     end
 
+    def username_exists?(username)
+      User.find_by(username: username) != nil
+    end
+
+    def email_exists?(email)
+      User.find_by(email: email) != nil
+    end
+
   end
 
 end

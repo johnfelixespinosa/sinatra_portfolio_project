@@ -20,6 +20,14 @@ class UsersController < ApplicationController
        params[:password] == ""
        flash[:message] = "Missing fields"
        redirect to '/signup'
+     elsif
+       username_exists?(params[:username])
+       flash[:message] = "Username exists, try logging in."
+       redirect to '/login'
+     elsif
+       email_exists?(params[:email])
+       flash[:message] = "Email already in use, please try again."
+       redirect to '/signup'
     else
        @user = User.new(
         :username => params[:username],

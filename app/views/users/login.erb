@@ -1,4 +1,9 @@
 <h3>Login</h3>
+
+<% if flash[:message] %>
+  <strong><%= flash[:message] %></strong>
+<% end %>
+
 <form action="/login" method="POST">
   <p>Name: <input type="text" name="username"></p>
   <p>Password: <input type="text" name="password"></p>
