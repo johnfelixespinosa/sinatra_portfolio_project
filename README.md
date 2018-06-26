@@ -10,6 +10,11 @@ John Espinosa for Learn.co Fullstack Web Development Course
   * User create with signup/signout using name, email, and password allowing for sessions
   * CRUD for user created objects (schedules, also classes?) 
 
+  | Students          | Instructor    |
+  | -------------     |:-------------:| 
+  | CRUD schedules    | CRUD classes  |
+  
+
 # Development Timeline
   ##### June 21
     * Started with user model creation with routes and views
