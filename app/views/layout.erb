@@ -6,22 +6,40 @@
   <body>
     <center>
 
-      <% if logged_in? %>
+      <% if logged_in? && is_a_student? %>
 
+        <h1>Student Dashboard</h1><br>
+        <a href="/">Search Classes</a><br>
+        <a href="/">Your Enrolled Classes</a><br>
+
+        <%= yield %>
+
+        <a href="/logout">Logout</a>
+ 
+      <% elsif logged_in? && !is_a_student? %>
+        
+        <h1>Instructor Dashboard</h1><br>
         <a href="/courses/new_course">Create A New Course</a><br>
         <a href="/courses/courses/">Your Courses</a><br>
+
         <%= yield %>
+
         <a href="/logout">Logout</a>
 
       <% else %>
 
+        <h2> Imagine Online Community College </h2>
+         
         <a href="/signup">Signup</a><br>
-        <a href="/login">Login</a>
+        <a href="/login">Login</a><br>
+
         <%= yield %>
+
+        
 
       <% end %> 
     
-      <!-- <%= yield %>  -->
+
       
       
     </center>

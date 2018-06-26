@@ -2,7 +2,7 @@ require 'rack-flash'
 class CoursesController < ApplicationController
   use Rack::Flash
 
-  get '/courses/courses/' do
+  get '/courses/courses' do
       @user = User.find_by_slug(params[:slug])
       erb :'courses/courses'
   end

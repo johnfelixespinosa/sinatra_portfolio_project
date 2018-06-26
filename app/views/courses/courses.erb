@@ -1,5 +1,4 @@
-<p> Logged in as <%= current_user.username %>
-<h1> Enrolled Courses </h1>
+<h1> Courses by: <%= current_user.username %> </h1>
 
 <% if flash[:message] %>
   <strong><font color=red><%= flash[:message] %></strong></font>

@@ -30,8 +30,10 @@ class ApplicationController <Sinatra::Base
       User.find_by(email: email) != nil
     end
 
-    # def multiple_usertypes?(usertype)
-    #   User.
+     def is_a_student?
+      @current_user == current_user
+      @current_user.student?
+    end
 
   end
 
