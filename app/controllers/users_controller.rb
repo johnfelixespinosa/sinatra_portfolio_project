@@ -23,8 +23,8 @@ class UsersController < ApplicationController
 
       redirect to ("/users/#{@user.slug}")
     else
-      flash[:message] = "Username exists"
-      redirect to '/signup'
+      flash[:message] = "Username exists, did you mean Login"
+      redirect to '/login'
     end 
   end
 
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
       flash[:message] = "Successfully Logged In"
       redirect to ("/users/#{@user.slug}")
     else
-      flash[:message] = "Account Not Found, Please Signup"
+      puts "Account Not Found, Please Signup"
 
       redirect to '/signup'
     end
