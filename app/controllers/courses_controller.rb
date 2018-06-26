@@ -1,4 +1,6 @@
+require 'rack-flash'
 class CoursesController < ApplicationController
+  use Rack::Flash
 
   get '/courses/courses' do
     if logged_in?
@@ -18,8 +20,11 @@ class CoursesController < ApplicationController
 
   post '/new_course' do
     if logged_in?
-      if params.any? == ""
-        redirect to '/courses/new_course'
+      if params[:course_name] == "" ||
+         params[:course_instructor] == "" ||
+         params[:course_credits] == "" 
+         flash[:message] = "Unable to add course"
+         redirect to '/courses/new_course'
       else
         @course = current_user.courses.build(
           course_name: params[:course_name],
@@ -28,8 +33,10 @@ class CoursesController < ApplicationController
           user_id: session[:user_id]
           )
         if @course.save
-          params.inspect
+           flash[:message] = "Course Added"
+           redirect to '/courses/courses'
         else
+          flash[:message] = "Course Exists, Unable to add"
           redirect to '/courses/new_course'
         end
       end

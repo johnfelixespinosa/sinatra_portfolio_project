@@ -1,9 +1,15 @@
 <p> Welcome <%= current_user.username %>
 <h1> Your Courses </h1>
 
+<br>
+<% if flash.has?(:message) %>
+  <font color=red><%= flash[:message] %></font>
+<% end %>
+
+
 <% current_user.courses.each do |c| %>
   <div>
-    <h2><font color=red><%= c.course_name %></font><p></h2>
+    <h2><font color=blue><%= c.course_name %></font><p></h2>
       <h4>Instructor: <%= c.course_instructor %></h4>
         <h4>Course Credits: <%= c.course_credits %></h4><br>
           <%# <h4><%= course.user_id %>

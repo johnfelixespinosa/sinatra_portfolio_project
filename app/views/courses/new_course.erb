@@ -1,3 +1,8 @@
+<br>
+<% if flash.has?(:message) %>
+  <font color=red><%= flash[:message] %></font>
+<% end %>
+
 <h2>Add a course</h2>
 <form action="/new_course" method="POST">
   <p>Course Name: <input type="text" name="course_name"></p>
