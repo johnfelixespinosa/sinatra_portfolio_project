@@ -2,12 +2,9 @@ require 'rack-flash'
 class CoursesController < ApplicationController
   use Rack::Flash
 
-  get '/courses/courses' do
-    if logged_in?
+  get '/courses/courses/' do
+      @user = User.find_by_slug(params[:slug])
       erb :'courses/courses'
-    else
-      redirect to '/login'
-    end
   end
 
   get '/courses/new_course' do 

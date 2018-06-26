@@ -20,11 +20,11 @@ class UsersController < ApplicationController
        params[:password] == ""
        flash[:message] = "Missing fields"
        redirect to '/signup'
-     elsif
+    elsif
        username_exists?(params[:username])
        flash[:message] = "Username exists, try logging in."
        redirect to '/login'
-     elsif
+    elsif
        email_exists?(params[:email])
        flash[:message] = "Email already in use, please try again."
        redirect to '/signup'
@@ -39,21 +39,6 @@ class UsersController < ApplicationController
        redirect to ("/users/#{@user.slug}")
      end
   end
-  #   @user = User.new(
-  #     :username => params[:username],
-  #     :email => params[:email],
-  #     :password => params[:password]
-  #     )
-  #   if @user.save
-  #     session[:user_id] = @user.id
-  #     flash[:message] = "Successfull Account Creation"
-
-  #     redirect to ("/users/#{@user.slug}")
-  #   else
-  #     flash[:message] = "Username exists, did you mean Login"
-  #     redirect to '/login'
-  #   end 
-  # end
 
   get '/login' do
     erb :'/users/login'

@@ -1,6 +1,6 @@
 <br>
-<% if flash.has?(:message) %>
-  <%= flash[:message] %>
+<% if flash[:message] %>
+  <strong><%= flash[:message] %></strong>
 <% end %>
 
 <h3>Welcome to your Schedule Maker, <%= @user.username %>!</h3>
