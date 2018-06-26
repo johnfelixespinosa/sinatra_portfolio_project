@@ -17,11 +17,15 @@ class UsersController < ApplicationController
       :email => params[:email],
       :password => params[:password]
       )
-    @user.save
-    session[:user_id] = @user.id
-    flash[:message] = "Successfull Account Creation"
+    if @user.save
+      session[:user_id] = @user.id
+      flash[:message] = "Successfull Account Creation"
 
-    redirect to ("/users/#{@user.slug}")
+      redirect to ("/users/#{@user.slug}")
+    else
+      flash[:message] = "Username exists"
+      redirect to '/signup'
+    end 
   end
 
   get '/login' do
