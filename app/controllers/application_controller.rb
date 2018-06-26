@@ -30,6 +30,9 @@ class ApplicationController <Sinatra::Base
       User.find_by(email: email) != nil
     end
 
+    # def multiple_usertypes?(usertype)
+    #   User.
+
   end
 
 end
