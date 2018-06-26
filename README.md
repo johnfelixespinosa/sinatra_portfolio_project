@@ -12,7 +12,16 @@ John Espinosa for Learn.co Fullstack Web Development Course
 
   | Students          | Instructor    |
   | -------------     |:-------------:| 
-  | CRUD schedules    | CRUD classes  |
+  | CRUD schedules    | CRUD courses  |
+
+  ##### Courses
+    * Courses can be created by Instructors
+    * Attributes include course_name, course_instuctor(user[:username]), course_day, course_credits
+    * Courses can be edited by instructors
+
+  ##### Schedules
+    * Schedules can be created by Students
+    * Attributes include semester, courses, user_id
   
 
 # Development Timeline

@@ -1,6 +1,9 @@
-require 'rack-flash'
+require 'pry'
+require 'sinatra'
+require 'sinatra/flash'
+
 class UsersController < ApplicationController
-  use Rack::Flash
+  register Sinatra::Flash
 
   get '/users/:slug' do
     @user = User.find_by_slug(params[:slug])
@@ -12,21 +15,37 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    @user = User.new(
-      :username => params[:username],
-      :email => params[:email],
-      :password => params[:password]
-      )
-    if @user.save
-      session[:user_id] = @user.id
-      flash[:message] = "Successfull Account Creation"
-
-      redirect to ("/users/#{@user.slug}")
+    if params[:username] == "" || 
+       params[:email] == "" || 
+       params[:password] == ""
+       flash[:message] = "Missing fields"
+       redirect to '/signup'
     else
-      flash[:message] = "Username exists, did you mean Login"
-      redirect to '/login'
-    end 
+       @user = User.new(
+        :username => params[:username],
+        :email => params[:email],
+        :password => params[:password]
+        )
+       @user.save
+       session[:user_id] = @user.id
+       redirect to ("/users/#{@user.slug}")
+     end
   end
+  #   @user = User.new(
+  #     :username => params[:username],
+  #     :email => params[:email],
+  #     :password => params[:password]
+  #     )
+  #   if @user.save
+  #     session[:user_id] = @user.id
+  #     flash[:message] = "Successfull Account Creation"
+
+  #     redirect to ("/users/#{@user.slug}")
+  #   else
+  #     flash[:message] = "Username exists, did you mean Login"
+  #     redirect to '/login'
+  #   end 
+  # end
 
   get '/login' do
     erb :'/users/login'
@@ -41,7 +60,7 @@ class UsersController < ApplicationController
       flash[:message] = "Successfully Logged In"
       redirect to ("/users/#{@user.slug}")
     else
-      puts "Account Not Found, Please Signup"
+      flash[:message] = "Account Not Found, Please Signup"
 
       redirect to '/signup'
     end
