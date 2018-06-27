@@ -29,6 +29,18 @@ class UsersController < ApplicationController
        email_exists?(params[:email])
        flash[:message] = "Email already in use, please try again."
        redirect to '/signup'
+    elsif
+       params[:username].length < 8
+       flash[:message] = "Username to short"
+       redirect to '/signup'
+    elsif
+       params[:usertype] == "student" && !email_has_iocc_edu?(params[:email])
+       flash[:message] = "IOCC students please use your @iocc.edu email"
+       redirect to '/signup'
+    elsif
+       params[:usertype] == "instructor" && !email_has_iocc_staff_edu?(params[:email])
+       flash[:message] = "IOCC instructors please use your @iocc.staff.edu email"
+       redirect to '/signup'
     else
        @user = User.new(
         :username => params[:username],
@@ -38,6 +50,7 @@ class UsersController < ApplicationController
         )
        @user.save
        session[:user_id] = @user.id
+       
        redirect to ("/users/#{@user.slug}")
      end
   end

@@ -33,7 +33,7 @@ class CoursesController < ApplicationController
            flash[:message] = "Course Added"
            redirect to '/courses/courses'
         else
-          flash[:message] = "You are already enrolled in #{@course.course_name} course"
+          flash[:message] = "You are already enrolled in #{@course.course_name}"
           redirect to '/courses/new_course'
         end
       end

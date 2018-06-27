@@ -30,10 +30,19 @@ class ApplicationController <Sinatra::Base
       User.find_by(email: email) != nil
     end
 
-     def is_a_student?
+    def is_a_student?
       @current_user == current_user
       @current_user.student?
     end
+
+    def email_has_iocc_edu?(email)
+      email.downcase.include?('@iocc.edu')
+    end
+
+    def email_has_iocc_staff_edu?(email)
+      email.downcase.include?('@iocc.staff.edu')
+    end
+
 
   end
 
