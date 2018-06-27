@@ -25,7 +25,7 @@ class CoursesController < ApplicationController
       else
         @course = current_user.courses.build(
           course_name: params[:course_name],
-          course_instructor: params[:course_instructor],
+          course_instructor: current_user[:username],
           course_credits: params[:course_credits],
           user_id: session[:user_id]
           )
