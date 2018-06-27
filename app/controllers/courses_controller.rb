@@ -18,7 +18,7 @@ class CoursesController < ApplicationController
   post '/new_course' do
     if logged_in?
       if params[:course_name] == "" ||
-         params[:course_instructor] == "" ||
+         params[:course_description] == "" ||
          params[:course_credits] == "" 
          flash[:message] = "Unable to add course"
          redirect to '/courses/new_course'
@@ -26,6 +26,7 @@ class CoursesController < ApplicationController
         @course = current_user.courses.build(
           course_name: params[:course_name],
           course_instructor: current_user[:username],
+          course_description: params[:course_description],
           course_credits: params[:course_credits],
           user_id: session[:user_id]
           )

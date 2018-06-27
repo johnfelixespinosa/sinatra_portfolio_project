@@ -5,16 +5,23 @@
 <% end %>
 
 <% current_user.courses.each do |c| %>
-  <div>
-    <h2><font color=blue><%= c.course_name %></font><p></h2>
-      <h4>Instructor: <%= c.course_instructor %></h4>
-        <h4>Course Credits: <%= c.course_credits %></h4><br>
-          <%# <h4><%= course.user_id %>
+
+<!-- <div class="span4" style="position:absolute;left=300px;"> -->
+    <%= c.course_name %></div>
+<!-- <div class="span4" style="padding-bottom:10px"> -->
+      Instructor: <%= c.course_instructor %>
+
+<div class="description" style="padding-bottom:10px">
+  Course Description: <%= c.course_description %>
+
+<div class="span4" style="padding-bottom:10px">
+
+                  Course Credits: <%= c.course_credits %>
             <form method="post" action="/courses/<%= c.id %>/delete">
               <input id="hidden" type="hidden" name="_method" value="DELETE">
               <input class="btn btn-primary" type="submit" value="Cancel <%= c.course_name %>">
             </form>
 
-  </div>
+
 <% end %>
 
