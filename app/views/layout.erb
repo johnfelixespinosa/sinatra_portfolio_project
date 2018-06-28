@@ -28,58 +28,8 @@
         </ul>
       </div>
     </nav>
+    <%= yield %>
 
-      <div class="row">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-6">
-        <br><br>
-        <div class="jumbotron">
-
-          <% if logged_in? && is_a_student? %>
-
-        <h1>Student Dashboard</h1><br>
-        <a href="/">Search Classes</a><br>
-        <a href="/">Your Enrolled Classes</a><br>
-
-        <%= yield %>
-
-        <a href="/logout">Logout</a>
- 
-      <% elsif logged_in? && !is_a_student? %>
-        
-        <h1>Instructor Dashboard</h1><br>
-        <a href="/courses/new_course">Create A New Course</a><br>
-        <a href="/courses/courses">Your Courses</a><br>
-
-        <%= yield %>
-
-        <a href="/logout">Logout</a>
-
-      <% else %>
-
-      <div class="container">
-       <div class="row">
-         <h2> Imagine Online Community College </h2>
-      </div>
-
-
-         
-        <a href="/signup">Signup</a><br>
-        <a href="/login">Login</a><br>
-
-        <%= yield %>
-
-        
-
-      <% end %> 
-
-
-
-          </p>
-        </div>
-      </div>
-      <div class="col-sm-3"></div>
-    </div>
 
     <!-- CSS -->  
     <style type="text/css">
@@ -89,47 +39,16 @@
         background-repeat: no-repeat;
         background-position: top center; 
         background-size: cover;}
+
+          .thick-green-border {
+    border-color: green;
+    border-width: 10px;
+    border-style: solid;
+    border-radius: 50%;
+  }
     </style>
 
 
-<!--       <% if logged_in? && is_a_student? %>
-
-        <h1>Student Dashboard</h1><br>
-        <a href="/">Search Classes</a><br>
-        <a href="/">Your Enrolled Classes</a><br>
-
-        <%= yield %>
-
-        <a href="/logout">Logout</a>
- 
-      <% elsif logged_in? && !is_a_student? %>
-        
-        <h1>Instructor Dashboard</h1><br>
-        <a href="/courses/new_course">Create A New Course</a><br>
-        <a href="/courses/courses">Your Courses</a><br>
-
-        <%= yield %>
-
-        <a href="/logout">Logout</a>
-
-      <% else %>
-
-      <div class="container">
-       <div class="row">
-         <h2> Imagine Online Community College </h2>
-      </div>
-
-
-         
-        <a href="/signup">Signup</a><br>
-        <a href="/login">Login</a><br>
-
-        <%= yield %>
-
-        
-
-      <% end %> 
-     -->
 
       
       

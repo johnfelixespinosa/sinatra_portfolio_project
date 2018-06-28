@@ -1,13 +1,27 @@
-<h3>Login</h3>
+<title>Login - Imagine Online Community College</title>
+
+<body>
+
 
 <% if flash[:message] %>
   <strong><%= flash[:message] %></strong>
 <% end %>
 
-<form action="/login" method="POST">
-  <p>Name: <input type="text" name="username"></p>
-  <p>Password: <input type="text" name="password"></p>
-  <input class="btn btn-primary" type="submit">
-</form>
+<br>
+<div class="card mx-auto" style="width:45%;">
+  <div class="card-header"> Login 
+  </div>
+    <div class="card-body">
+      <form class="form-center" action="/login" method="POST">
+        <label for="username">Username</label>
+          <input type="username" class="form-control" id="username" aria-describedby="usernamehelp" placeholder="Enter username" name="username">
+            <small id="usernamehelp" class="form-text text-muted">Must be minimum 8 characters</small>
+        <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+        <br><button type="submit" class="btn btn-primary" value="submit">Submit</button>
+        </form>
 
+    </div>
+</div>
+</body>
 
