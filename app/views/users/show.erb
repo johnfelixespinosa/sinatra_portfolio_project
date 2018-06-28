@@ -1,7 +1,55 @@
+<title>Dashboard - Imagine Online Community College</title>
+
+<body>
+
 <br>
+<div class="card mx-auto" style="width:45%;">
+  <div class="card-header text-left"><h4> Instructor Dashboard</h4>
+
+    <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="text">Logged in as <%= current_user.username %>
+  </li>
+    </ul>
+    <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="text">Account type: <strong><%= current_user.usertype.upcase %></strong></a>
+  </li>
+    </ul>
+
+
+
+
+
+    <% if !!flash[:message] %>
+      <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Error! </strong><%= flash[:message] %>
+      </div>
+    <% end %>
+
+    <div class="card-body">
+      
+      <div class="card">
+        <h5 class="card-header">Featured</h5>
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+      </div>
+        
+  
+    </div>
+</div>
+</body>
+
+
+
+<!-- <br>
 <% if flash[:message] %>
   <strong><%= flash[:message] %></strong>
 <% end %>
 
 <p> Logged in as <%= current_user.username %>
-<br>Account type <strong><%= current_user.usertype %></strong><p>
+<br>Account type <strong><%= current_user.usertype %></strong><p> -->
