@@ -1,10 +1,50 @@
-<h3>Sign Up</h3>
+<title>Signup - Imagine Online Community College</title>
 
-<% if flash[:message] %>
-  <strong><%= flash[:message] %></strong>
-<% end %>
+<body>
 
-<form action="/signup" method="POST">
+<br>
+<div class="card mx-auto" style="width:45%;">
+  <div class="card-header"><h5> Signup</h5>
+  </div>
+
+    <% if !!flash[:message] %>
+      <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Error! </strong><%= flash[:message] %>
+      </div>
+    <% end %>
+
+    <div class="card-body">
+      <form class="form-center" action="/signup" method="POST">
+        
+        <label for="username">Username</label>
+          <input type="username" class="form-control" id="username" aria-describedby="usernamehelp" placeholder="Enter username" name="username">
+            <small id="usernamehelp" class="form-text text-muted">Must be minimum 8 characters</small>
+        
+        <label for="usertype">Account Type</label><br>
+          
+          <input type="radio" id="instructor" name="usertype" value="instructor">
+          <label for="instructor">Instructor</label><br>
+        
+          <input type="radio" id="student" name="usertype" value="student">
+          <label for="student">Student</label><br>
+       
+        <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+            <small id="emailhelp" class="form-text text-muted">@iocc.edu and @iocc.staff.edu emails accepted</small><br>
+
+        <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+            <small id="passwordhelp" class="form-text text-muted">Please remember your password</small>
+
+        <br><button type="submit" class="btn btn-primary" value="submit">Submit</button>
+        </form>
+
+    </div>
+</div>
+</body>
+
+<!-- <form action="/signup" method="POST">
   <p>Name: <input type="text" name="username"></p>
   <p>Account Type: <br>
     <input type="radio" id="instructor" name="usertype" value="instructor">
@@ -14,5 +54,5 @@
   <p>Email: <input type="text" name="email"></p>
   <p>Password: <input type="text" name="password"></p>
   <input class="btn btn-primary" type="submit">
-</form>
+</form> -->
 

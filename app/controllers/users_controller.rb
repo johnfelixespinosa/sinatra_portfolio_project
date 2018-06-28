@@ -34,7 +34,7 @@ class UsersController < ApplicationController
        flash[:message] = "Username to short"
        redirect to '/signup'
     elsif
-       params[:password].length < 8
+       params[:password].size < 8
        flash[:message] = "Password to short"
        redirect to '/signup'
     elsif
