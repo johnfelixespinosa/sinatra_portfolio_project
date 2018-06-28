@@ -26,12 +26,12 @@ class UsersController < ApplicationController
        flash[:message] = "Username exists, try logging in."
        redirect to '/login'
     elsif
-       email_exists?(params[:email])
-       flash[:message] = "Email already in use, please try again."
-       redirect to '/signup'
-    elsif
        params[:username].length < 8
        flash[:message] = "Username to short"
+       redirect to '/signup'
+    elsif
+       email_exists?(params[:email])
+       flash[:message] = "Email already in use, please try again."
        redirect to '/signup'
     elsif
        params[:password].size < 8
