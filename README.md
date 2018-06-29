@@ -27,10 +27,14 @@ John Espinosa for Learn.co Fullstack Web Development Course
 # Development Timeline
   ##### June 21
     * Started with user model creation with routes and views
-  ##### June 25 - 
+  ##### June 25  
     * User account creation completed
     * Users can create classes that get added to their schedule
     * Classes can be deleted
+  ##### June 29
+    * All current pages have bootstrap styling
+    * Account types implemented, users can either be student, or instructor
+      - students should be able to see all classes added by instructors
 
 
 # License
