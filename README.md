@@ -1,7 +1,22 @@
-# sinatra_portfolio_project
-John Espinosa for Learn.co Fullstack Web Development Course
+### sinatra_portfolio_project
+## Imagine Online Community College
+
+  John Espinosa for Learn.co Fullstack Web Development Course
 
 # Install Instructions
+  To begin using this application
+  - clone into local repository
+  - run bundle install
+  - rake db:migrate
+  - rake db:seed
+  - shotgun to start local server
+  - in browser visit http://127.0.0.1:9393/
+  - signup can be achieved or use these accounts to test user functions
+
+    STUDENT ACCOUNT
+
+    INSTRUCTOR ACCOUNT
+
 
 # Purpose
   This Sinatra App serves as a semester planner for students. Its main purpose is for students to be able to create an account and then add classes to a schedule. The schedule is then created listing all of their chosen classes for that semester with the ability to edit and/or delete classes. Students should have the ability to create multiple schedules planning for future semesters.  
