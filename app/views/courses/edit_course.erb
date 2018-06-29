@@ -1,1 +1,83 @@
-Edit course
+<title>Edit a course - Imagine Online Community College</title>
+
+<body>
+
+<br>
+<div class="card mx-auto" style="width:45%;">
+  <div class="card-header text-left"><h4> Welcome, staff member!</h4>
+
+    <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="text">Logged in as <%= current_user.username %>
+  </li>
+    </ul>
+    <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="text">Account type: <strong><%= current_user.usertype.upcase %></strong></a>
+  </li>
+    </ul>
+
+
+
+
+
+    <% if !!flash[:message] %>
+      <div class="alert alert-dismissible alert-info">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= flash[:message] %>
+      </div>
+    <% end %>
+
+    <div class="card-body">
+      
+      <div class="card text-center">
+        <h5 class="card-header">Edit a Course</h5>
+
+          <div class="card-body text-left">
+            <h5 class="card-title text-left">Course Details</h5>
+
+              <form action="/courses/<%= @course.id %>" method="POST">
+                <input type="hidden" id="hidden" name="_method" value="PATCH">
+                <label for="course_name">Course Name:</label>
+                <input type="text" id="course_name" class="form-control" name="course_name" value="<%= @course.course_name %>"> </input>
+            <!-- <small id="usernamehelp" class="form-text text-muted">Must be minimum 8 characters</small> -->
+
+                <label for="course_description">Description:</label>
+                <textarea class="form-control" id="course_description" rows="3" value="<%= @course.course_description %>" name="course_description" placeholder="<%= @course.course_description %>"></textarea><br>
+
+                <div class="form-group">
+                  <label for="course_credits">Credits Offered</label>
+                  <select class="form-control" id="course_credits" value="<%= @course.course_credits%>" name="course_credits">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+
+                <br><button type="submit" class="btn btn-primary" value="submit">Submit</button>
+              </form>  
+          </div>
+      </div>
+</body>
+
+
+
+
+
+<!-- <h2>Add a course</h2>
+
+<% if flash[:message] %>
+  <strong><%= flash[:message] %></strong>
+<% end %>
+
+<form action="/new_course" method="POST">
+  <p>Course Name: <input type="text" name="course_name"></p>
+  <p>Instructor: <input type="text" name="course_instructor"></p>
+  <p><textarea cols = "20" rows = "40" name ="course_description"></textarea>
+
+
+  <p>Credits: <input type="text" name="course_credits"></p>
+  <input class="btn btn-primary" type="submit" value="submit">
+</form> -->

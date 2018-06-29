@@ -66,6 +66,27 @@ class CoursesController < ApplicationController
     end
   end
 
+  patch '/courses/:id' do #update post
+    if logged_in?
+      @course = Course.find_by_id(params[:id])
+      if params[:course_name] == "" ||
+         params[:course_description] == "" ||
+         params[:course_credits] == "" 
+         flash[:message] = "Please fill in all parts!"
+         redirect to "/courses/#{@course.user.slug}/#{@course.id}/edit"
+      else
+        @course.update(
+          course_name: params[:course_name],
+          course_description: params[:course_description],
+          course_credits: params[:course_credits]
+          )
+        @course.save
+        redirect to ("/users/#{@course.user.slug}")
+      end
+    else
+        redirect to '/login'
+    end
+  end
 
 
 end
