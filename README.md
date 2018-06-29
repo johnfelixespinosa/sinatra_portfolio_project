@@ -6,10 +6,10 @@
 # Install Instructions
   To begin using this application
   - clone into local repository
-  - run bundle install
-  - rake db:migrate
-  - rake db:seed
-  - shotgun to start local server
+  - run `bundle install`
+  - `rake db:migrate`
+  - `rake db:seed`
+  - `shotgun` to start local server
   - in browser visit http://127.0.0.1:9393/
   - signup can be achieved or use these accounts to test user functions
 

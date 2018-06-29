@@ -32,7 +32,7 @@ class CoursesController < ApplicationController
           )
         if @course.save
            flash[:message] = "Course Added"
-           redirect to '/courses/courses'
+           redirect to ("/users/#{@course.user.slug}")
         else
           flash[:message] = "You are already enrolled in #{@course.course_name}"
           redirect to '/courses/new_course'
@@ -43,17 +43,28 @@ class CoursesController < ApplicationController
     end
   end
 
-  delete '/courses/:id/delete' do
+  delete '/courses/:slug/:id/delete' do
     if logged_in?
       @course = Course.find_by_id(params[:id])
         if @course && @course.user == current_user
           @course.delete
         end
-        redirect to '/courses/courses'
+        redirect to ("/users/#{@course.user.slug}")
       else
         redirect to '/login'
       end
     end
+
+  get '/courses/:slug/:id/edit' do
+    if logged_in?
+      @course = Course.find_by_id(params[:id])
+        if @course && @course.user == current_user
+        erb :'courses/edit_course'
+      else
+        redirect to '/login'
+      end
+    end
+  end
 
 
 
