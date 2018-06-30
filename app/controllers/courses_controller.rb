@@ -34,7 +34,7 @@ class CoursesController < ApplicationController
       else
         @course = current_user.courses.build(
           course_name: params[:course_name],
-          course_instructor: current_user[:username],
+          course_instructor: "#{[current_user.first_name, current_user.last_name].join(' ')}",
           course_description: params[:course_description],
           course_credits: params[:course_credits],
           user_id: session[:user_id]

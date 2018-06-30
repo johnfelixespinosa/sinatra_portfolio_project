@@ -4,7 +4,7 @@
 
 <br>
 <div class="card mx-auto" style="width:45%;">
-  <div class="card-header text-left"><h4> Welcome, <%= @user.username %></h4>
+  <div class="card-header text-left"><h4> Welcome, <%= current_user.first_name %> <%= current_user.last_name %></h4>
 
     <ul class="nav justify-content-end">
   <li class="nav-item">
@@ -60,7 +60,7 @@
                 <a href="/courses/<%= current_user.slug %>/<%= c1.id %>/edit" class="btn btn-dark btn-sm float-right">Edit</a>
 
                 </div>
-            </div>
+            
 
           <% if c2 %> 
             <div class="card">

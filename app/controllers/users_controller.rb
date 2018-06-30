@@ -48,6 +48,8 @@ class UsersController < ApplicationController
     else
        @user = User.new(
         :username => params[:username],
+        :first_name => params[:first_name],
+        :last_name => params[:last_name],
         :email => params[:email],
         :password => params[:password],
         :usertype => params[:usertype]
