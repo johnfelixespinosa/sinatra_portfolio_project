@@ -1,6 +1,6 @@
-class Course < ActiveRecord::Base
+class EnrolledCourse < ActiveRecord::Base
   belongs_to :user
-  has_many :enrolled_courses
+  belongs_to :course
   validates_uniqueness_of :course_name, scope: :user_id
 
   def slug

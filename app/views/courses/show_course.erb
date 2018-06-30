@@ -25,20 +25,21 @@
     <% end %>
 
     <div class="card-body">
+
       
       <div class="card text-center">
-        <h5 class="card-header"><%= @course.course_name %></h5>
+        <h5 class="card-header"><%= @course_name %></h5>
 
           <div class="card-body text-left">
             <h5 class="card-title text-left">Course Description</h5>
-                <%= @course.course_description %><br><br>
+ 
+                <%= @course_description %><br><br>
                 <h5>Course Instructor</h5>
-                <%= @course.course_instructor %><br><br>
-                <small class="text-muted float-left"><%= @course.course_credits %> credits</small><br><br>
+                <%= @course_instructor %><br><br>
+                <small class="text-muted float-left"><%= @course_credits %> credits</small><br><br>
 
 
-                <form class="form-center" action="/enroll_class" method="POST">
-                <button type="submit" class="btn btn-primary" value="submit">Enroll</button>
+                <a href="/courses/<%= @course.id %>/enroll" class="btn btn-success btn-sm float-right">Enroll</a>
               </form>  
           </div>
       </div>
