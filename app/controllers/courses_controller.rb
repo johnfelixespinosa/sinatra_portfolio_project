@@ -15,6 +15,15 @@ class CoursesController < ApplicationController
     end
   end
 
+  get '/courses/:id/show' do
+    if logged_in?
+      @course = Course.find_by_id(params[:id])
+      erb :'courses/show_course'
+    else
+      redirect to '/login'
+    end
+  end
+
   post '/new_course' do
     if logged_in?
       if params[:course_name] == "" ||

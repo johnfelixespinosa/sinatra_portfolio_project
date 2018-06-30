@@ -37,10 +37,10 @@ class UsersController < ApplicationController
        params[:password].size < 8
        flash[:message] = "Password to short"
        redirect to '/signup'
-    elsif
-       params[:usertype] == "student" && !email_has_iocc_edu?(params[:email])
-       flash[:message] = "IOCC students please use your @iocc.edu email"
-       redirect to '/signup'
+    # elsif
+    #    params[:usertype] == "student" && !email_has_iocc_edu?(params[:email])
+    #    flash[:message] = "IOCC students please use your @iocc.edu email"
+    #    redirect to '/signup'
     elsif
        params[:usertype] == "instructor" && !email_has_iocc_staff_edu?(params[:email])
        flash[:message] = "IOCC instructors please use your @iocc.staff.edu email"

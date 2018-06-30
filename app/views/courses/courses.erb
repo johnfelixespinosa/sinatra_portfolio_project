@@ -1,27 +1,56 @@
-<h1> Courses by: <%= current_user.username %> </h1>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Search Courses - Imagine Online Community College</title>
 
-<% if flash[:message] %>
-  <strong><font color=red><%= flash[:message] %></strong></font>
-<% end %>
+    <body>
+      <br>
+      <div class="card mx-auto" style="width:45%;">
+        <div class="card-header text-left"><h4> Welcome, <%= current_user.username %></h4>
 
-<% current_user.courses.each do |c| %>
-
-<!-- <div class="span4" style="position:absolute;left=300px;"> -->
-    <%= c.course_name %></div>
-<!-- <div class="span4" style="padding-bottom:10px"> -->
-      Instructor: <%= c.course_instructor %>
-
-<div class="description" style="padding-bottom:10px">
-  Course Description: <%= c.course_description %>
-
-<div class="span4" style="padding-bottom:10px">
-
-                  Course Credits: <%= c.course_credits %>
-            <form method="post" action="/courses/<%= c.id %>/delete">
-              <input id="hidden" type="hidden" name="_method" value="DELETE">
-              <input class="btn btn-primary" type="submit" value="Cancel <%= c.course_name %>">
-            </form>
+          <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="text">Logged in as <%= current_user.username %>
+        </li>
+          </ul>
+          <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="text">Account type: <strong><%= current_user.usertype.upcase %></strong></a>
+        </li>
+          </ul>
+        </div>
 
 
-<% end %>
+          <h5 class="card-header text-center">Available Courses</h5>
 
+          <% Course.all.to_ary.in_groups_of(2) do |c1, c2| %>
+           <div class="card-group">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><%= c1.course_name %></h5>
+              <p class="card-text"><%= c1.course_description %></p>
+              <small class="text-muted"><%= c1.course_credits %> credits</small>
+              </div>
+                <div class="card-footer">
+
+                <a href="/courses/<%= c1.id %>/show" class="btn btn-success btn-sm float-right">Learn More</a>
+
+                </div>
+            </div>
+          <% if c2 %> 
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><%= c2.course_name %></h5>
+                <p class="card-text"><%= c2.course_description %></p>
+                <small class="text-muted"><%= c2.course_credits %> credits</small>
+              </div>
+                <div class="card-footer">
+
+                <a href="/courses/<%= c2.id %>/show" class="btn btn-success btn-sm float-right">Learn More</a>
+
+              
+                </div>
+            </div>
+          <% end %>
+           </div>
+          <% end %>
