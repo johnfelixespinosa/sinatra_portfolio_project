@@ -106,7 +106,7 @@
               <h5 class="card-header">Courses You're Enrolled in</h5>
             </div>
 
-          <% current_user.enrolled_courses.to_ary.in_groups_of(2) do |c1, c2| %>
+          <% current_user.courses.to_ary.in_groups_of(2) do |c1, c2| %>
            <div class="card-group">
             <div class="card">
               <div class="card-body">

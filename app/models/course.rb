@@ -1,7 +1,8 @@
 class Course < ActiveRecord::Base
   belongs_to :user
-  has_many :enrolled_courses
+  
   validates_uniqueness_of :course_name, scope: :user_id
+  validates_uniqueness_of :course_id
 
   def slug
     course_name.downcase.gsub(" ","-")

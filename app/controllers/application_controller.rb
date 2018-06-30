@@ -43,6 +43,10 @@ class ApplicationController <Sinatra::Base
       email.downcase.include?('@iocc.staff.edu')
     end
 
+    def all_students
+      User.all.find_by(usertype: "student")
+    end
+
 
   end
 
