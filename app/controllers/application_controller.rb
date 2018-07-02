@@ -43,8 +43,8 @@ class ApplicationController <Sinatra::Base
       email.downcase.include?('@iocc.staff.edu')
     end
 
-    def all_students
-      User.all.find_by(usertype: "student")
+    def find_enrollments
+      @enrolled_courses = Enrollment.where(user_id: current_user.id)
     end
 
 

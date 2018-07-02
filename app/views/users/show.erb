@@ -106,50 +106,14 @@
               <h5 class="card-header">Courses You're Enrolled in</h5>
             </div>
 
-          <% current_user.courses.to_ary.in_groups_of(2) do |c1, c2| %>
-           <div class="card-group">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title"><%= c1.course_name %></h5>
-              <p class="card-text"><%= c1.course_description %></p>
-              <small class="text-muted float-left"><%= c1.course_credits %> credits</small>
-              </div>
-                <div class="card-footer">
-
-                <form method="post" action="/courses/<%= current_user.slug %>/<%= c1.id %>/delete">
-                <input id="hidden" type="hidden" name="_method" value="DELETE">
-                <input class="btn btn-light btn-sm float-right" type="submit" value="Withdraw">
-                </form>
-
-                </div>
-            </div>
-
-          <% if c2 %> 
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title"><%= c2.course_name %></h5>
-                <p class="card-text"><%= c2.course_description %></p>
-                <small class="text-muted float-left"><%= c2.course_credits %> credits</small>
-              </div>
-                <div class="card-footer">
-
-                <form method="post" action="/courses/<%= current_user.slug %>/<%= c2.id %>/delete">
-                <input id="hidden" type="hidden" name="_method" value="DELETE">
-                <input class="btn btn-light btn-sm float-right" type="submit" value="Cancel">
-                </form>
-
-
-              
-                </div>
-            </div>
+          <% find_enrollments.each do |e| %>
+          <%= e.course_id %>
           <% end %>
           
           <% end %>
 
-          </div>
+  
 
-
-    <% end %>
 
 
     </div>

@@ -40,10 +40,9 @@ class CoursesController < ApplicationController
           course_name: params[:course_name],
           course_instructor: "#{[current_user.first_name, current_user.last_name].join(' ')}",
           course_description: params[:course_description],
-          course_credits: params[:course_credits],
-          user_id: session[:user_id],
-          course_id: @course.id
+          course_credits: params[:course_credits]
           )
+        @course.save
         if @course.save
            flash[:message] = "Course Added"
            redirect to ("/users/#{@course.user.slug}")
@@ -109,10 +108,11 @@ class CoursesController < ApplicationController
         @current_user = current_user
         @enroll = Enrollment.new(
           :user_id => session[:user_id],
-          :course_id => @course[:course_id]
+          :course_id => @course.id
           )
-        @enroll.save
-        @enroll
+       @enroll.save
+       redirect to ("/users/#{@course.user.slug}")
+
       end
     end
   end
