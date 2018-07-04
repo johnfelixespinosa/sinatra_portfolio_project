@@ -15,8 +15,12 @@
   - signup can be achieved or use these accounts to test user functions
 
     STUDENT ACCOUNT
+    * Username : "studenttest"
+    * Password : "password"
 
     INSTRUCTOR ACCOUNT
+    * Username : "instructortest"
+    * Password : "password"
 
 
 ### Purpose
