@@ -1,6 +1,6 @@
 class Course < ActiveRecord::Base
   belongs_to :user
-  has_many :enrollments
+  belongs_to :enrollment
   
   validates_uniqueness_of :course_name, scope: :user_id
 

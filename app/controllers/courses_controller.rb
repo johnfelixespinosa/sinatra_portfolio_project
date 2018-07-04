@@ -101,74 +101,35 @@ class CoursesController < ApplicationController
     end
   end
 
-  get '/courses/:id/enroll' do 
+  get '/courses/:id/enroll_course' do
     if logged_in?
-      if is_a_student?
-        @course = Course.find_by_id(params[:id])
-        @current_user = current_user
-        @enroll = Enrollment.new(
-          :user_id => session[:user_id],
-          :course_id => @course.id
-          )
-       @enroll.save
-       redirect to ("/users/#{@course.user.slug}")
-
-      end
+      @course = Course.find_by_id(params[:id])
+      @course_description = @course.course_description
+      @course_instructor = @course.course_instructor
+      @course_name = @course.course_name
+      @course_credits = @course.course_credits
+      erb :'courses/enroll_course'
+    else
+      redirect to '/login'
     end
   end
 
+  get '/courses/:id/enroll' do 
+    if logged_in?
+      if is_a_student?
+          @course = Course.find_by_id(params[:id])
+          @enroll = Enrollment.new(
+            :user_id => session[:user_id],
+            :course_id => @course.id
+            )
+         @enroll.save
+         flash[:message] = "Enrolled in Course"
+         redirect to ("/users/#{@course.user.slug}")
+      end
+    end
+  end
+  
 
-
-  # get '/courses/:id/enroll' do
-  #       if logged_in?
-  #         if is_a_student?
-  #           @course = Course.find_by_id(params[:id])
-  #           @course_description = @course.course_description
-  #           @course_instructor = @course.course_instructor
-  #           @course_name = @course.course_name
-  #           @course_credits = @course.course_credits
-
-  #           @enroll_course = current_user.enrolled_courses.build(
-  #             course_name: @course_name,
-  #             course_description: @course_description,
-  #             course_instructor: @course_instructor,
-  #             course_credits: @course_credits,
-  #         )
-  #           @user = current_user
-  #           @user.enrolled_courses << @enroll_course
-  #          redirect to ("/users/#{@user.slug}")
-  #        end
-  #      end
-  #    end
-
-
-            
-            
-      #       @enroll_course = current_user.enrolled_courses.build(
-      #         course_name: @course[:course_name],
-      #         course_instructor: @course[:course_instructor],
-      #         course_description: @course[:course_description],
-      #         course_credits: @course[:course_credits],
-      #         user_id: session[:user_id]
-      #         )
-      #       if 
-      #         @enroll_course.save
-      #       # @course = current_user.courses.build(
-      #       #   course_name: params[:course_name],
-      #       #   course_instructor: "#{[current_user.first_name, current_user.last_name].join(' ')}",
-      #       #   course_description: params[:course_description],
-      #       #   course_credits: params[:course_credits],
-      #       #   user_id: session[:user_id]
-      #       #   ) 
-          
-      #        flash[:message] = "Course Added"
-      #        redirect to ("/users/#{@course.user.slug}")
-      #       else
-      #        flash[:message] = "You are already enrolled in #{@course.course_name}"
-      #        redirect to ("/users/#{@course.user.slug}")
-      #     end
-
-    
 
 
 

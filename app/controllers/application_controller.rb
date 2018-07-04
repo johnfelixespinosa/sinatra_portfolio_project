@@ -43,8 +43,17 @@ class ApplicationController <Sinatra::Base
       email.downcase.include?('@iocc.staff.edu')
     end
 
-    def find_enrollments
-      @enrolled_courses = Enrollment.where(user_id: current_user.id)
+    def find_student_enrollments
+      @active_enrollments = Enrollment.where(user_id: @current_user.id)
+    end
+
+    # def match_enrollment_to_course
+    #   Course.find_by(id: @active_enrollments.each.course_id)
+    # end
+
+    def already_enrolled?
+      @course = Course.find_by_id(params[:id])
+      Enrollment.find_by(user_id: current_user.id, course_id: @course.id)
     end
 
 

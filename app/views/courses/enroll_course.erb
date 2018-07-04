@@ -1,0 +1,64 @@
+<title>Course Page - Imagine Online Community College</title>
+
+<body>
+
+<br>
+<div class="card mx-auto" style="width:45%;">
+  <div class="card-header text-left"><h4> Welcome, <%= current_user.first_name %> <%= current_user.last_name %></h4>
+
+    <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="text">Logged in as <%= current_user.username %>
+  </li>
+    </ul>
+    <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="text">Account type: <strong><%= current_user.usertype.upcase %></strong></a>
+  </li>
+    </ul>
+
+    <% if !!flash[:message] %>
+      <div class="alert alert-dismissible alert-info">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= flash[:message] %>
+      </div>
+    <% end %>
+
+    <div class="card-body">
+
+      <% if already_enrolled? %>
+
+      
+      <div class="card text-center">
+        <h5 class="card-header"><%= @course_name %></h5>
+
+          <div class="card-body text-left">
+            <h5 class="card-title text-left">Course Description</h5>
+ 
+                <%= @course_description %><br><br>
+                <h5>Course Instructor</h5>
+                <%= @course_instructor %><br><br>
+                <small class="text-muted float-left"><%= @course_credits %> credits</small><br><br>
+
+
+                <a href="/courses/courses" class="btn btn-success btn-sm float-right">Return to courses</a>
+
+        <% else %>
+      <div class="card text-center">
+        <h5 class="card-header"><%= @course_name %></h5>
+
+          <div class="card-body text-left">
+            <h5 class="card-title text-left">Course Description</h5>
+ 
+                <%= @course_description %><br><br>
+                <h5>Course Instructor</h5>
+                <%= @course_instructor %><br><br>
+                <small class="text-muted float-left"><%= @course_credits %> credits</small><br><br>
+
+
+                <a href="/courses/<%= @course.id %>/enroll" class="btn btn-success btn-sm float-right">Enroll</a>
+        <% end %>
+              </form>  
+          </div>
+      </div>
+</body>
