@@ -57,7 +57,7 @@ class UsersController < ApplicationController
        @user.save
        session[:user_id] = @user.id
        
-       redirect to ("/users/#{@user.slug}")
+       redirect to ("/users/#{current_user.slug}")
      end
   end
 
@@ -72,7 +72,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       
       flash[:message] = "Successfully Logged In"
-      redirect to ("/users/#{@user.slug}")
+      redirect to ("/users/#{current_user.slug}")
     else
       flash[:message] = "Account Not Found, Please Signup"
 
