@@ -45,7 +45,7 @@ class CoursesController < ApplicationController
         @course.save
         if @course.save
            flash[:message] = "Course Added"
-           redirect to ("/users/#{@course.user.slug}")
+           redirect to ("/users/#{current_user.slug}")
         else
           flash[:message] = "You are already enrolled in #{@course.course_name}"
           redirect to '/courses/new_course'
@@ -62,7 +62,7 @@ class CoursesController < ApplicationController
         if @course && @course.user == current_user
           @course.delete
         end
-        redirect to ("/users/#{@course.user.slug}")
+        redirect to ("/users/#{current_user.slug}")
       else
         redirect to '/login'
       end
@@ -86,7 +86,7 @@ class CoursesController < ApplicationController
          params[:course_description] == "" ||
          params[:course_credits] == "" 
          flash[:message] = "Please fill in all parts!"
-         redirect to "/courses/#{@course.user.slug}/#{@course.id}/edit"
+         redirect to "/courses/#{current_user.slug}/#{@course.id}/edit"
       else
         @course.update(
           course_name: params[:course_name],
@@ -94,7 +94,7 @@ class CoursesController < ApplicationController
           course_credits: params[:course_credits]
           )
         @course.save
-        redirect to ("/users/#{@course.user.slug}")
+        redirect to ("/users/#{current_user.slug}")
       end
     else
         redirect to '/login'
@@ -117,27 +117,27 @@ class CoursesController < ApplicationController
   get '/courses/:id/enroll' do 
     if logged_in?
       if is_a_student?
-          @course = Course.find_by_id(params[:id])
+          current_course
           @enroll = Enrollment.new(
             :user_id => session[:user_id],
-            :course_id => @course.id
+            :course_id => current_course.id
             )
          @enroll.save
          flash[:message] = "Enrolled in Course"
-         redirect to ("/users/#{@course.user.slug}")
+         redirect to ("/users/#{current_user.slug}")
       end
     end
   end
 
   delete '/courses/:slug/:id/withdraw' do
     if logged_in?
-      @course = Course.find_by_id(params[:id])
+      current_course
       find_student_enrollments.each do |x| 
-      if Course.find_by_id(x.course_id == @course.id)
+      if Course.find_by_id(x.course_id == current_course.id)
       x.delete
       end
       end 
-        redirect to ("/users/#{@course.user.slug}")
+        redirect to ("/users/#{current_user.slug}")
       else
         redirect to '/login'
       end

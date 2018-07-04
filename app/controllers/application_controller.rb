@@ -22,6 +22,10 @@ class ApplicationController <Sinatra::Base
       @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     end
 
+    def current_course
+      @course = Course.find_by_id(params[:id])
+    end
+
     def username_exists?(username)
       User.find_by(username: username) != nil
     end
@@ -46,10 +50,6 @@ class ApplicationController <Sinatra::Base
     def find_student_enrollments
       @active_enrollments = Enrollment.where(user_id: @current_user.id)
     end
-
-    # def match_enrollment_to_course
-    #   Course.find_by(id: @active_enrollments.each.course_id)
-    # end
 
     def already_enrolled?
       @course = Course.find_by_id(params[:id])
