@@ -135,7 +135,7 @@ class CoursesController < ApplicationController
       find_student_enrollments.each do |x| 
       if Course.find_by_id(x.course_id == current_course.id)
       x.delete
-      flash[:message] = "Withdrew from Course" 
+      #flash[:message] = "Withdrew from Course" 
       end
       end
        
