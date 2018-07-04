@@ -119,6 +119,11 @@
               </div>
                 <div class="card-footer">
 
+                <form method="post" action="/courses/<%= current_user.slug %>/<%= @course.id %>/withdraw">
+                <input id="hidden" type="hidden" name="_method" value="DELETE">
+                <input class="btn btn-danger btn-sm float-right" type="submit" value="Withdraw">
+                </form>
+
 
 
                 </div>

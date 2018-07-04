@@ -128,8 +128,20 @@ class CoursesController < ApplicationController
       end
     end
   end
-  
 
+  delete '/courses/:slug/:id/withdraw' do
+    if logged_in?
+      @course = Course.find_by_id(params[:id])
+      find_student_enrollments.each do |x| 
+      if Course.find_by_id(x.course_id == @course.id)
+      x.delete
+      end
+      end 
+        redirect to ("/users/#{@course.user.slug}")
+      else
+        redirect to '/login'
+      end
+    end
 
 
 
