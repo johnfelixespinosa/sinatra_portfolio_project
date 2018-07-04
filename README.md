@@ -3,6 +3,7 @@
 
   John Espinosa for Learn.co Fullstack Web Development Course
 
+
 ### Install Instructions
   To begin using this application
   - clone into local repository
@@ -19,24 +20,27 @@
 
 
 ### Purpose
-  This Sinatra App serves as a semester planner for students. Its main purpose is for students to be able to create an account and then add classes to a schedule. The schedule is then created listing all of their chosen classes for that semester with the ability to edit and/or delete classes. Students should have the ability to create multiple schedules planning for future semesters.  
+  This Sinatra App serves as a homepage for a make-believe online community college. The college allows users to create accounts for whether they are a student or an instructor. Students and instructors have various features they can both do. You can read more about this project on my blog at [Sinatra Portfolio Projet](http://johnfelixespinosa.github.io/).
 
 ### Features
-  * User create with signup/signout using name, email, and password allowing for sessions
-  * CRUD for user created objects (schedules, also classes?) 
+  * User create with signup/signout using username, name, email, and password allowing for sessions
+  * CRUD for user created objects  
 
   | Students          | Instructor    |
   | -------------     |:-------------:| 
-  | CRUD schedules    | CRUD courses  |
+  | Can search available courses    | CRUD courses  |
+  | Can Enroll and withdraw from courses |
 
   ##### Courses
     * Courses can be created by Instructors
-    * Attributes include course_name, course_instuctor(user[:username]), course_day, course_credits
+    * Attributes include course_name, course_instuctor(user[:username]), course_credits
     * Courses can be edited by instructors
 
-  ##### Schedules
-    * Schedules can be created by Students
-    * Attributes include semester, courses, user_id
+  ##### Enrollments
+    * Students can enroll in a course which creates a new Enrollment object
+    * An Enrollment object contains user_id and course_id
+    * An Enrollment object can be deleted, effectively withdrawing the student from the course
+    * An enrollment object cannot be duplicated due to the already_enrolled? method
   
 
 ### Development Timeline
@@ -50,7 +54,10 @@
     * All current pages have bootstrap styling
     * Account types implemented, users can either be student, or instructor
       - students should be able to see all classes added by instructors
-
+  ##### July 4
+    * All features working
+    * Student Enrollment works properly
+    * Finished up app for submittal
 
 ### License
   This project is being created open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
