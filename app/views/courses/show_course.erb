@@ -30,15 +30,15 @@
 
       
       <div class="card text-center">
-        <h5 class="card-header"><%= @course_name %></h5>
+        <h5 class="card-header"><%= @name %></h5>
 
           <div class="card-body text-left">
             <h5 class="card-title text-left">Course Description</h5>
  
-                <%= @course_description %><br><br>
+                <%= @description %><br><br>
                 <h5>Course Instructor</h5>
-                <%= @course_instructor %><br><br>
-                <small class="text-muted float-left"><%= @course_credits %> credits</small><br><br>
+                <%= @instructor %><br><br>
+                <small class="text-muted float-left"><%= @credits %> credits</small><br><br>
 
 
                 <a href="/courses/<%= @course.id %>/enroll" class="btn btn-success btn-sm float-right">Enroll</a>

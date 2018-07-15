@@ -18,10 +18,10 @@ class CoursesController < ApplicationController
   get '/courses/:id/show' do
     if logged_in?
       @course = Course.find_by_id(params[:id])
-      @course_description = @course.course_description
-      @course_instructor = @course.course_instructor
-      @course_name = @course.course_name
-      @course_credits = @course.course_credits
+      @description = @course.description
+      @instructor = @course.instructor
+      @name = @course.name
+      @credits = @course.credits
       erb :'courses/show_course'
     else
       redirect to '/login'
@@ -30,24 +30,24 @@ class CoursesController < ApplicationController
 
   post '/new_course' do
     if logged_in?
-      if params[:course_name] == "" ||
-         params[:course_description] == "" ||
-         params[:course_credits] == "" 
+      if params[:name] == "" ||
+         params[:description] == "" ||
+         params[:credits] == "" 
          flash[:message] = "Unable to add course"
          redirect to '/courses/new_course'
       else
         @course = current_user.courses.build(
-          course_name: params[:course_name],
-          course_instructor: "#{[current_user.first_name, current_user.last_name].join(' ')}",
-          course_description: params[:course_description],
-          course_credits: params[:course_credits]
+          name: params[:name],
+          instructor: "#{[current_user.first_name, current_user.last_name].join(' ')}",
+          description: params[:description],
+          credits: params[:credits]
           )
         @course.save
         if @course.save
            flash[:message] = "Course Added"
            redirect to ("/users/#{current_user.slug}")
         else
-          flash[:message] = "You are already enrolled in #{@course.course_name}"
+          flash[:message] = "You are already enrolled in #{@course.name}"
           redirect to '/courses/new_course'
         end
       end
@@ -82,16 +82,16 @@ class CoursesController < ApplicationController
   patch '/courses/:id' do #update post
     if logged_in? || !right_instructor
       @course = Course.find_by_id(params[:id])
-      if params[:course_name] == "" ||
-         params[:course_description] == "" ||
-         params[:course_credits] == "" 
+      if params[:name] == "" ||
+         params[:description] == "" ||
+         params[:credits] == "" 
          flash[:message] = "Please fill in all parts!"
          redirect to "/courses/#{current_user.slug}/#{@course.id}/edit"
       else
         @course.update(
-          course_name: params[:course_name],
-          course_description: params[:course_description],
-          course_credits: params[:course_credits]
+          name: params[:name],
+          description: params[:description],
+          credits: params[:credits]
           )
         @course.save
         redirect to ("/users/#{current_user.slug}")
@@ -104,10 +104,10 @@ class CoursesController < ApplicationController
   get '/courses/:id/enroll_course' do
     if logged_in?
       @course = Course.find_by_id(params[:id])
-      @course_description = @course.course_description
-      @course_instructor = @course.course_instructor
-      @course_name = @course.course_name
-      @course_credits = @course.course_credits
+      @description = @course.description
+      @instructor = @course.instructor
+      @name = @course.name
+      @credits = @course.credits
       erb :'courses/enroll_course'
     else
       redirect to '/login'

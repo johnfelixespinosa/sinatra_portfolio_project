@@ -48,9 +48,9 @@
            <div class="card-group">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title"><%= c1.course_name %></h5>
-              <p class="card-text"><%= c1.course_description %></p>
-              <small class="text-muted float-left"><%= c1.course_credits %> credits</small>
+                <h5 class="card-title"><%= c1.name %></h5>
+              <p class="card-text"><%= c1.description %></p>
+              <small class="text-muted float-left"><%= c1.credits %> credits</small>
               </div>
                 <div class="card-footer">
 
@@ -67,9 +67,9 @@
           <% if c2 %> 
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title"><%= c2.course_name %></h5>
-                <p class="card-text"><%= c2.course_description %></p>
-                <small class="text-muted float-left"><%= c2.course_credits %> credits</small>
+                <h5 class="card-title"><%= c2.name %></h5>
+                <p class="card-text"><%= c2.description %></p>
+                <small class="text-muted float-left"><%= c2.credits %> credits</small>
               </div>
                 <div class="card-footer">
 
@@ -115,9 +115,9 @@
               <div class="card-group">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title"><%= @course.course_name %></h5>
-                  <p class="card-text"><%= @course.course_description %></p>
-                  <small class="text-muted float-left"><%= @course.course_credits %> credits</small>
+                    <h5 class="card-title"><%= @course.name %></h5>
+                  <p class="card-text"><%= @course.description %></p>
+                  <small class="text-muted float-left"><%= @course.credits %> credits</small>
                   </div>
                     <div class="card-footer">
 

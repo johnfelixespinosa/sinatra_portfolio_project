@@ -36,15 +36,15 @@
 
               <form action="/courses/<%= @course.id %>" method="POST">
                 <input type="hidden" id="hidden" name="_method" value="PATCH">
-                <label for="course_name">Course Name:</label>
-                <input type="text" id="course_name" class="form-control" name="course_name" value="<%= @course.course_name %>"> </input>
+                <label for="name">Course Name:</label>
+                <input type="text" id="name" class="form-control" name="name" value="<%= @course.name %>"> </input>
 
-                <label for="course_description">Description:</label>
-                <textarea class="form-control" id="course_description" rows="3" value="<%= @course.course_description %>" name="course_description" placeholder="<%= @course.course_description %>"></textarea><br>
+                <label for="description">Description:</label>
+                <textarea class="form-control" id="description" rows="3" value="<%= @course.description %>" name="description" placeholder="<%= @course.description %>"></textarea><br>
 
                 <div class="form-group">
-                  <label for="course_credits">Credits Offered</label>
-                  <select class="form-control" id="course_credits" value="<%= @course.course_credits%>" name="course_credits">
+                  <label for="credits">Credits Offered</label>
+                  <select class="form-control" id="credits" value="<%= @course.credits%>" name="credits">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
