@@ -80,7 +80,7 @@ class CoursesController < ApplicationController
   end
 
   patch '/courses/:id' do #update post
-    if logged_in?
+    if logged_in? || !right_instructor
       @course = Course.find_by_id(params[:id])
       if params[:course_name] == "" ||
          params[:course_description] == "" ||
@@ -95,7 +95,7 @@ class CoursesController < ApplicationController
           )
         @course.save
         redirect to ("/users/#{current_user.slug}")
-      end
+        end
     else
         redirect to '/login'
     end

@@ -18,6 +18,10 @@ class ApplicationController <Sinatra::Base
       !!current_user
     end
 
+    def right_instructor
+      @course.instructor == current_user.first_name + ' ' + current_user.last_name
+    end
+
     def current_user
       @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     end

@@ -7,53 +7,49 @@
     <body>
       <br>
       <div class="card mx-auto" style="width:45%;">
-        <div class="card-header text-left"><h4> Welcome, <%= current_user.first_name %> <%= current_user.last_name %></h4>
-
-          <ul class="nav justify-content-end">
-        <li class="nav-item">
-          <a class="text">Logged in as <%= current_user.username %>
-        </li>
-          </ul>
-          <ul class="nav justify-content-end">
-        <li class="nav-item">
-          <a class="text">Account type: <strong><%= current_user.usertype.upcase %></strong></a>
-        </li>
-          </ul>
-        </div>
-
-
-          <h5 class="card-header text-center">Available Courses</h5><br>
-
+      <div class="card-header text-left"><h4> Welcome, <%= current_user.first_name %> <%= current_user.last_name %></h4>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="text">Logged in as <%= current_user.username %>
+          </li>
+        </ul>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="text">Account type: <strong><%= current_user.usertype.upcase %></strong></a>
+          </li>
+        </ul>
+      </div>
+        <h5 class="card-header text-center">Available Courses</h5><br>
           <% Course.all.to_ary.in_groups_of(2) do |c1, c2| %>
-           <div class="card-group">
+            <div class="card-group">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title"><%= c1.course_name %></h5>
-              <p class="card-text"><%= c1.course_description %></p>
-              <small class="text-muted"><%= c1.course_credits %> credits</small>
+                <p class="card-text"><%= c1.course_description %></p>
+                <small class="text-muted"><%= c1.course_credits %> credits</small>
               </div>
-                <div class="card-footer">
-
+                
+              <div class="card-footer">
                 <a href="/courses/<%= c1.id %>/enroll_course" class="btn btn-success btn-sm float-right">Learn More</a>
-
-                </div>
+              </div>
             </div>
+          
           <% if c2 %> 
+          
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title"><%= c2.course_name %></h5>
                 <p class="card-text"><%= c2.course_description %></p>
                 <small class="text-muted"><%= c2.course_credits %> credits</small>
               </div>
-                <div class="card-footer">
-
-                <a href="/courses/<%= c2.id %>/enroll_course" class="btn btn-success btn-sm float-right">Learn More</a>
-
               
+                <div class="card-footer">
+                  <a href="/courses/<%= c2.id %>/enroll_course" class="btn btn-success btn-sm float-right">Learn More</a>
                 </div>
             </div>
+
           <% end %>
-           </div>
+            </div>
           <% end %>
 </body>
 </html>

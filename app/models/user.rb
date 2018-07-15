@@ -19,3 +19,6 @@ class User < ActiveRecord::Base
   end
 
 end
+
+#alias 
+#enrollment as a join table?
